@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AC23- Vídeo - Rohit Jaswal</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0b0c10;
+      --surface: #13151a;
+      --border: #1e2130;
+      --accent: #e8ff47;
+      --accent2: #47c8ff;
+      --text: #e8eaf0;
+      --muted: #7a8099;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(11, 12, 16, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      margin-left: 2rem;
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      padding: 7rem 3rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: -120px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(232, 255, 71, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 42ch;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+    .hero-badge {
+      text-align: right;
+    }
+
+    .big-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 12vw, 11rem);
+      line-height: 1;
+      color: var(--border);
+      letter-spacing: 0.02em;
+      user-select: none;
+    }
+
+    .big-number span {
+      display: block;
+      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-top: 0.5rem;
+    }
+
+    /* ─── VIDEO SECTION ─── */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 3rem;
+    }
+
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      color: var(--accent2);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .video-wrapper {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+    }
+
+    /* ─── DESCRIPTION ─── */
+    .desc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .desc-block h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .desc-block p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+    }
+
+    .highlight-box p {
+      color: var(--text);
+      font-style: italic;
+      font-size: 1.05rem;
+    }
+
+    /* ─── TECHNICAL ASPECTS ─── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .tech-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      transition: border-color .3s, transform .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+
+    .tech-card:hover {
+      border-color: #333;
+      transform: translateY(-4px);
+    }
+
+    .tech-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .tech-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .tech-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(232, 255, 71, 0.1);
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      margin-top: 1rem;
+      margin-right: 0.3rem;
+    }
+
+    .tag.blue {
+      background: rgba(71, 200, 255, 0.1);
+      color: var(--accent2);
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 4rem auto 0;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .footer-info {
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .footer-info strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .footer-right {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp .8s ease forwards;
+    }
+
+    .fade-up:nth-child(1) {
+      animation-delay: .1s;
+    }
+
+    .fade-up:nth-child(2) {
+      animation-delay: .25s;
+    }
+
+    .fade-up:nth-child(3) {
+      animation-delay: .4s;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 4rem 1.5rem 3rem;
+      }
+
+      .hero-badge {
+        display: none;
+      }
+
+      .desc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      .section {
+        padding: 3rem 1.5rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════ HEADER ══════════════ -->
+  <header>
+    <a href="#" class="logo">AC23-DISSENY INT WEB</a>
+    <nav>
+      <a href="#video">Veure Vídeo</a>
+      <a href="#descripcion">Descripció</a>
+      <a href="#tecnico">Técnic</a>
+    </nav>
+  </header>
+
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero">
+    <div>
+      <div class="hero-label fade-up">2 vídeos</div>
+      <h1 class="fade-up">
+        <!-- ✏️ EDITAR: Cambia el título de tu proyecto aquí -->
+        Batalla de <br /><span>Chakirmaut</span>
+      </h1>
+      <p class="fade-up">
+        Batalla decisiva per a que Temujin passes a ser Genghis Khan
+      </p>
+    </div>
+
+    <div class="hero-badge fade-up">
+      <div class="big-number">
+        03<br />50
+        <span>Min · Seg</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ VIDEO ══════════════ -->
+  <section class="section" id="video">
+    <div class="section-label">Fragment del vídeo 1</div>
+
+    <div class="video-wrapper">
+      <video controls poster="./battleImage.PNG">
+        <source src="./shortGuerraMongolia.mp4" type="video/mp4" />
+        Tu navegador no soporta la reproducción de video HTML5.
+        <a href="tu-video.mp4">Descargar video</a>
+      </video>
+    </div>
+    <br>
+    <a href="https://drive.google.com/file/d/10Y5YjGLeujzm_m2z5Sy0ArJt0zp0aAAC/view?usp=sharing" class="logo" style="display: flex; justify-self: center;">LINK DRIVE VÍDEO BATALLA GENGHIS KHAN</a>
+  </section>
+
+  <!-- VIDEO 2 -->
+  <section class="hero">
+    <div>
+      <h1 class="fade-up">
+        <!-- ✏️ EDITAR: Cambia el título de tu proyecto aquí -->
+        EDIT ANIMALS <br /><span>I PAISATGES</span>
+      </h1>
+      <p class="fade-up">
+        Aquest és el primer vídeo que vaig fer, sense tenir gaire idea de com funcionava el Kdenlive.
+        He mostrat un bon domini de les transicions, però no m'agradava gaire el format, per lo qual vaig fer el vídeo,
+        edit de la guerra del mongols.
+      </p>
+    </div>
+
+    <div class="hero-badge fade-up">
+      <div class="big-number">
+        03<br />24
+        <span>Min · Seg</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ VIDEO ══════════════ -->
+  <section class="section" id="video">
+    <div class="section-label">Fragment del vídeo 2</div>
+
+    <div class="video-wrapper">
+      <video controls poster="./gladiatorImage.PNG">
+        <source src="./shortGuerraMongolia.mp4" type="video/mp4" />
+        Tu navegador no soporta la reproducción de video HTML5.
+        <a href="tu-video.mp4">Descargar video</a>
+      </video>
+    </div>
+    <a href="https://drive.google.com/file/d/1E8FOmBi2BmU5KwEDzApUhllE2BQBMK49/view?usp=sharing" class="logo" style="display: flex; justify-self: center;">LINK DRIVE VÍDEO PAISATGES I ANIMALS</a>
+  </section>
+
+
+  <!-- ══════════════ DESCRIPCIÓN ══════════════ -->
+  <section class="section" id="descripcion">
+    <div class="section-label">Descripció del Projecte</div>
+
+    <div class="desc-grid">
+      <div class="desc-block">
+
+        <p>
+          1r vídeo: Aquest vídeo tracta d'un edit d'una batalla molt important en el transcurs de l'història i que va
+          ser crucial
+          per la consolidació del imperi mongol.
+          <br><br>
+          2n vídeo: Aquest vídeo és el que tenia pensat fer inicialment, son fragments de vídeo, de 10-20 segons, que
+          s'han sintetitzat dins un sol vídeo amb efectes, transicions, keyframes.
+          Amb música de fons. Em semblava un format poc original per lo qual he fet el vídeo 1. Però tampoc volia
+          esborrar el treball que ja estava fet.
+          <br>
+          <br>Recursos de vídeo & audio emprats per fer el vídeo
+        </p>
+      </div>
+
+      <div>
+        <div class="highlight-box">
+          <div class="section-label">VÍDEO 1</div>
+          <p>
+            Mongolian Nomad Strategy of War - Genghis Khan vs Jamukha
+            https://www.youtube.com/watch?v=naZvgkk0bS0
+          <a href="https://www.youtube.com/watch?v=naZvgkk0bS0">https://www.youtube.com/watch?v=naZvgkk0bS0</a> </p>
+          <br>
+          <p>
+            The HU - Wolf Totem (Official Music Video)
+            <a href="https://www.youtube.com/watch?v=jM8dCGIm6yc">https://www.youtube.com/watch?v=jM8dCGIm6yc</a> </p>
+        </div>
+        <br />
+        <div class="highlight-box">
+          <div class="section-label">VÍDEO 2</div>
+          <p>
+            Material d'stock
+            Vídeos del monestir de montserrat, lleons, àligues, pobles de Catalunya, etc.</p>
+          <br>
+          <p>
+            Hriste boze - Nikola Urošević Gedža
+          <a href="https://www.youtube.com/watch?v=vDLBFtoTTIc">https://www.youtube.com/watch?v=vDLBFtoTTIc</a> </p>
+          <p>
+            Gladiator • Now We Are Free • Hans Zimmer & Lisa Gerrard
+            <a href="https://www.youtube.com/watch?v=mQQKZ5cgybU">https://www.youtube.com/watch?v=mQQKZ5cgybU</a></p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <hr class="divider" />
+
+
+  <!-- ══════════════ ASPECTOS TÉCNICOS ══════════════ -->
+  <section class="section" id="tecnico">
+    <div class="section-label">Aspectes Técnics</div>
+
+    <div class="tech-grid">
+
+      <!-- CARD 1: Software -->
+      <div class="tech-card">
+        <div class="tech-icon">🎞️</div>
+        <h3>Software Utilitzat</h3>
+        <p>
+          <!-- ✏️ EDITAR: Detalla cómo usaste Kdenlive en tu proyecto -->
+          El projecte ha estat editat íntegrament en <strong style="color:var(--text)">Kdenlive</strong>.
+          S'han emprat les seves eines in-built per modificar i combinar fragments d'audio i vídeo, permetent obtenir el
+          efecte desitjat d'aquests.
+
+        </p>
+        <span class="tag">Kdenlive</span>
+      </div>
+
+      <!-- CARD 2: Transiciones y Efectos -->
+      <div class="tech-card">
+        <div class="tech-icon">✨</div>
+        <h3>Transicions i Efectes</h3>
+        <p>
+          <!-- ✏️ EDITAR: Enumera y explica los efectos que usaste -->
+          Se aplicaron los siguientes tipos de transiciones y efectos:<br /><br />
+          • <strong style="color:var(--text)">Fade in (Fundido entrante):</strong> Per introduir contingut de forma
+          progresiva, augmentat la seva intensitat.<br />
+          • <strong style="color:var(--text)">Fade out (Fundido saliente):</strong> Per retirar contingut de forma
+          progresiva, disminuint la seva intensitat.<br />
+          • <strong style="color:var(--text)">Autofade (Fundido automatico):</strong> Per introduir/retirar contingut de
+          forma
+          progresiva, augmentat/disminuint la seva intensitat, al principi i al final, de forma automàtica.<br />
+          • <strong style="color:var(--text)">Gradiente alfa:</strong> Per combinar dos vídeos alhora a la pantalla,
+          baixant l'intensitat de cadascun i sobreposant un sobre l'altra.<br />
+          • <strong style="color:var(--text)">Dissolve:</strong> Per a passes suaus entre escenes d'ambient.<br />
+          • <strong style="color:var(--text)">Keyframes :</strong> No és un efecte com a tal, però s'ha utilitzat en
+          combianció d'efectes per poder controlar els efectes sobre els fragments de contingut.<br />
+          • <strong style="color:var(--text)">Transicións -</strong><br />
+          • <strong style="color:var(--text)">Viñeta:</strong> Per anar mostrant parts del vídeo de forma progresiva,
+          parcialment.
+        </p>
+        <span class="tag blue">Fade</span>
+      </div>
+
+      <!-- CARD 3: Banda Sonora -->
+      <div class="tech-card">
+        <div class="tech-icon">🎵</div>
+        <h3>Banda Sonora</h3>
+        <p>
+          <strong style="color:var(--text)">He escollit aquestes bande sonores perque crec que combinen molt amb el format de vídeo que utilitzo.
+            El cant orotodox ya que utilitzo elements eclesiàstics, pero també perque té un ritme adequat per introduir imatges de forma atractiva.
+            <br><br>
+            I el soundtrack de gladiator per la mateixa raó, a més queda molt bé amb el paisatge mediterrani.
+            <br><br>
+            La cançó mongola empra una técnica musical anomenada "Khoomii" una mena de cant gutural, que es molt representativa del patrimoni cultural de Mongólia.
+          </strong>
+          <br><br>
+          <strong style="color:var(--text)">- Vídeo batalla -</strong>
+          <br><br>
+          <strong style="color:var(--text)">The HU - Wolf Totem (Official Music Video)
+            <br>
+          </strong>
+          <a href="https://www.youtube.com/watch?v=jM8dCGIm6yc">https://www.youtube.com/watch?v=jM8dCGIm6yc</a>
+          <br><br><br>
+          <strong style="color:var(--text)">- Vídeo animals & paisatges -</strong><br><br>
+          <strong style="color:var(--text)">Hriste boze - Nikola Urošević Gedža
+          <a href="https://www.youtube.com/watch?v=vDLBFtoTTIc">https://www.youtube.com/watch?v=vDLBFtoTTIc</a></strong>
+          <br><br>
+          <strong style="color:var(--text)">Gladiator • Now We Are Free • Hans Zimmer & Lisa Gerrard
+            <a href="https://www.youtube.com/watch?v=mQQKZ5cgybU">https://www.youtube.com/watch?v=mQQKZ5cgybU</a></strong>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer>
+    <div class="footer-logo">VideoProjecte</div>
+
+    <div class="footer-info">
+      <!-- ✏️ EDITAR: Pon tu nombre, asignatura y año -->
+      <strong>Rohit Jaswal</strong><br />
+      2n DAW
+    </div>
+
+    <div class="footer-right">
+      Editat a Kdenlive<br />
+      Publicat a GitHub Pages
+    </div>
+  </footer>
+
+</body>
+
+</html>
